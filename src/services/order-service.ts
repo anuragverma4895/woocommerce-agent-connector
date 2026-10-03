@@ -7,6 +7,7 @@ import type {
   NormalizedOrder,
 } from "../types/order.js";
 import { ConnectorError } from "../utils/errors.js";
+import { assertDateRange } from "../utils/validation.js";
 
 export class OrderService {
   constructor(
@@ -19,13 +20,21 @@ export class OrderService {
     const page = f.page ?? 1;
     const perPage = f.perPage ?? 10;
 
-    if (perPage > 50) {
+    if (
+      !Number.isInteger(page) ||
+      page < 1 ||
+      !Number.isInteger(perPage) ||
+      perPage < 1 ||
+      perPage > 50
+    ) {
       throw new ConnectorError(
         "INVALID_PAGINATION",
-        "per_page cannot exceed 50.",
+        "page must be at least 1 and per_page must be between 1 and 50.",
         400,
       );
     }
+
+    assertDateRange(f.after, f.before);
 
     if (this.useMock) {
       let orders = [...mockOrders];
@@ -33,7 +42,8 @@ export class OrderService {
       if (f.status) orders = orders.filter((x) => x.status === f.status);
       if (f.customerEmail) {
         orders = orders.filter(
-          (x) => x.customer.email?.toLowerCase() === f.customerEmail!.toLowerCase(),
+          (x) =>
+            x.customer.email?.toLowerCase() === f.customerEmail!.toLowerCase(),
         );
       }
       if (f.orderNumber) {
@@ -72,6 +82,14 @@ export class OrderService {
       search: searchTerm,
     });
 
+    if (!Array.isArray(response.data)) {
+      throw new ConnectorError(
+        "MALFORMED_UPSTREAM_RESPONSE",
+        "WooCommerce returned an unexpected orders payload.",
+        502,
+      );
+    }
+
     let orders = response.data.map(normalizeOrder);
 
     if (f.customerEmail) {
@@ -85,8 +103,7 @@ export class OrderService {
       response.headers.get("x-wp-total") ?? orders.length,
     );
     const totalPages = Number(
-      response.headers.get("x-wp-totalpages") ??
-        Math.ceil(total / perPage),
+      response.headers.get("x-wp-totalpages") ?? Math.ceil(total / perPage),
     );
 
     return {

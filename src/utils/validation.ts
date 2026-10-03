@@ -1,0 +1,7 @@
+import {z} from "zod"; import {ConnectorError} from "./errors.js"; import type {OrderFilters} from "../types/order.js";
+const date=z.string().datetime({offset:true});
+export const listOrdersSchema=z.object({page:z.number().int().min(1).default(1),per_page:z.number().int().min(1).max(50).default(10),status:z.string().min(1).optional(),after:date.optional(),before:date.optional()});
+export const getOrderSchema=z.object({order_id:z.number().int().positive()});
+export const searchOrdersSchema=z.object({page:z.number().int().min(1).default(1),per_page:z.number().int().min(1).max(50).default(10),customer_email:z.string().email().optional(),status:z.string().min(1).optional(),order_number:z.string().min(1).optional(),after:date.optional(),before:date.optional()});
+export function assertDateRange(after?:string,before?:string){if(after&&before&&new Date(after)>new Date(before))throw new ConnectorError("INVALID_DATE_RANGE","'after' must be earlier than 'before'.",400)}
+export function toOrderFilters(i:z.infer<typeof searchOrdersSchema>):OrderFilters{assertDateRange(i.after,i.before);return{page:i.page,perPage:i.per_page,customerEmail:i.customer_email,status:i.status,orderNumber:i.order_number,after:i.after,before:i.before}}

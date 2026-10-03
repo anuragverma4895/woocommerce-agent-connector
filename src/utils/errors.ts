@@ -1,0 +1,2 @@
+export class ConnectorError extends Error{constructor(public readonly code:string,message:string,public readonly status=500,public readonly retryable=false){super(message);this.name="ConnectorError"}}
+export function toSafeError(error:unknown):ConnectorError{return error instanceof ConnectorError?error:new ConnectorError("INTERNAL_ERROR","The connector could not complete the request.")}

@@ -1,0 +1,1 @@
+import {config} from "./config/env.js";import {createApp} from "./app.js";const app=createApp();app.listen(config.PORT,()=>console.log(`WooCommerce Agent Connector listening on http://localhost:${config.PORT} | mock=${config.USE_MOCK_DATA}`));

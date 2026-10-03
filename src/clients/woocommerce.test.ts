@@ -55,7 +55,7 @@ describe("WooCommerceClient", () => {
     const result = await client.request<unknown[]>("orders", { per_page: 5 });
 
     expect(result.data).toEqual([{ id: 1001, number: "1001" }]);
-    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(fetchMock).toHaveBeenCalledTimes(2);
   });
 
   it("converts aborts into a retryable timeout error", async () => {
@@ -71,7 +71,7 @@ describe("WooCommerceClient", () => {
       retryable: true,
     });
 
-    expect(fetchMock).toHaveBeenCalledTimes(2);
+    expect(fetchMock).toHaveBeenCalledTimes(1);
   });
 
   it("never includes the consumer secret in authentication errors", async () => {

@@ -115,10 +115,12 @@ describe("OrderService", () => {
 
     const service = new OrderService(client as any, false);
 
-    await expect(service.list()).rejects.toMatchObject({
-      code: "UPSTREAM_ERROR",
-      status: 502,
-    });
-    await expect(service.list()).rejects.not.toThrow(secret);
+    try {
+      await service.list();
+      throw new Error("Expected service.list() to reject");
+    } catch (error) {
+      expect(error).toMatchObject({ code: "UPSTREAM_ERROR", status: 502 });
+      expect((error as Error).message).not.toContain(secret);
+    }
   });
 });

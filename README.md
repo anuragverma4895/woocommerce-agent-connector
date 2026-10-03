@@ -173,3 +173,24 @@ For production, use a managed secrets system and enforce tenant isolation.
 - Assumptions/limitations: docs/CAPABILITIES.md
 
 No real customer data, passwords, API keys or credentials are included.
+
+## Design decisions
+
+- The connector is intentionally read-only so an agent cannot mutate merchant state.
+- The MCP layer calls the same OrderService used by the HTTP demo, avoiding duplicated business logic.
+- Mock mode is the default so reviewers can run the project without real merchant credentials.
+- Responses are normalized before being exposed to an agent to reduce payload size and avoid leaking unrelated WooCommerce fields.
+- Pagination, retries and request timeouts are bounded to prevent uncontrolled resource usage.
+- Customer-email search is implemented as a supported connector filter; the project does not claim arbitrary WooCommerce semantic search.
+
+## MCP SDK
+
+The MCP implementation uses `@modelcontextprotocol/server@^2.3.0` with stdio transport. Tool definitions use the SDK's `McpServer.registerTool()` API.
+
+## Future improvements
+
+- Add merchant installation/OAuth and per-tenant secret storage for a multi-merchant deployment.
+- Add contract tests against a dedicated WooCommerce sandbox.
+- Add structured observability with sensitive-field redaction.
+- Add distributed rate-limit coordination for horizontally scaled deployments.
+- Expand read-only coverage to additional merchant resources only when the agent use case requires them.

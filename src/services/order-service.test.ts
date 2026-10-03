@@ -115,8 +115,10 @@ describe("OrderService", () => {
 
     const service = new OrderService(client as any, false);
 
-    await expect(service.list()).rejects.toSatisfy((error: ConnectorError) => {
-      return !error.message.includes(secret);
+    await expect(service.list()).rejects.toMatchObject({
+      code: "UPSTREAM_ERROR",
+      status: 502,
     });
+    await expect(service.list()).rejects.not.toThrow(secret);
   });
 });

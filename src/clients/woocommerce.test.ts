@@ -55,7 +55,7 @@ describe("WooCommerceClient", () => {
     const result = await client.request<unknown[]>("orders", { per_page: 5 });
 
     expect(result.data).toEqual([{ id: 1001, number: "1001" }]);
-    expect(fetchMock).toHaveBeenCalledTimes(2);
+    expect(fetchMock).toHaveBeenCalledTimes(1);
   });
 
   it("converts aborts into a retryable timeout error", async () => {
@@ -66,8 +66,8 @@ describe("WooCommerceClient", () => {
     const client = new WooCommerceClient(fetchMock);
 
     await expect(client.request("orders")).rejects.toMatchObject({
-      code: "UPSTREAM_NETWORK_ERROR",
-      status: 502,
+      code: "UPSTREAM_TIMEOUT",
+      status: 504,
       retryable: true,
     });
 

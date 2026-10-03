@@ -90,53 +90,53 @@ export function createApp(service = new OrderService()) {
     body{margin:0;background:#fff;color:#111;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
     button,input,select{font:inherit}
     button{cursor:pointer}
-    .shell{max-width:1180px;margin:0 auto;padding:28px 22px 70px}
+    .shell{max-width:1220px;margin:0 auto;padding:32px 26px 80px}
     .topbar{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:1px solid #eee;padding-bottom:18px}
-    .brand{font-weight:800;letter-spacing:-.03em}
+    .brand{font-size:17px;font-weight:800;letter-spacing:-.03em}
     .brand span{font-weight:500;color:#777}
-    .status{display:flex;align-items:center;gap:8px;border:1px solid #e5e5e5;border-radius:999px;padding:7px 11px;font-size:12px;font-weight:700}
+    .status{display:flex;align-items:center;gap:8px;border:1px solid #e5e5e5;border-radius:999px;padding:9px 13px;font-size:14px;font-weight:700}
     .dot{width:7px;height:7px;border-radius:50%;background:#111}
     .hero{padding:54px 0 36px;max-width:850px}
-    .eyebrow{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#777;font-weight:800}
+    .eyebrow{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#777;font-weight:800}
     h1{font-size:clamp(42px,7vw,72px);line-height:.98;letter-spacing:-.055em;margin:13px 0 18px}
-    .hero p{font-size:17px;color:#555;line-height:1.65;margin:0;max-width:780px}
+    .hero p{font-size:19px;color:#555;line-height:1.65;margin:0;max-width:780px}
     .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
-    .btn{border:1px solid #111;background:#111;color:#fff;border-radius:10px;padding:10px 15px;font-weight:750}
+    .btn{border:1px solid #111;background:#111;color:#fff;border-radius:10px;padding:12px 17px;font-size:15px;font-weight:750}
     .btn.secondary{background:#fff;color:#111;border-color:#ddd}
-    .btn.small{padding:8px 11px;font-size:13px}
+    .btn.small{padding:9px 13px;font-size:14px}
     .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:12px 0 34px}
     .stat{border:1px solid #e8e8e8;border-radius:14px;padding:17px;background:#fff}
-    .stat .label{font-size:12px;color:#777}
-    .stat .value{font-size:26px;font-weight:800;letter-spacing:-.03em;margin-top:7px}
+    .stat .label{font-size:14px;color:#777}
+    .stat .value{font-size:30px;font-weight:800;letter-spacing:-.03em;margin-top:7px}
     .panel{border:1px solid #e6e6e6;border-radius:18px;overflow:hidden;margin-top:18px}
     .panel-head{padding:19px 20px;border-bottom:1px solid #eee;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-    .panel-title{font-size:17px;font-weight:800}
-    .panel-sub{font-size:12px;color:#777;margin-top:4px}
+    .panel-title{font-size:20px;font-weight:800}
+    .panel-sub{font-size:14px;color:#777;margin-top:4px}
     .filters{display:flex;gap:9px;flex-wrap:wrap}
-    .input,.select{height:40px;border:1px solid #ddd;border-radius:9px;padding:0 11px;background:#fff;color:#111;min-width:180px;outline:none}
+    .input,.select{height:44px;border:1px solid #ddd;border-radius:9px;padding:0 11px;background:#fff;color:#111;min-width:200px;outline:none}
     .input:focus,.select:focus{border-color:#111}
     .table-wrap{overflow:auto}
     table{width:100%;border-collapse:collapse;min-width:760px}
-    th,td{text-align:left;padding:14px 18px;border-bottom:1px solid #f0f0f0;font-size:13px}
-    th{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#777;background:#fafafa}
+    th,td{text-align:left;padding:16px 18px;border-bottom:1px solid #f0f0f0;font-size:15px}
+    th{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:#777;background:#fafafa}
     tr:last-child td{border-bottom:0}
     .order-id{font-weight:800}
     .customer{font-weight:650}
     .muted{color:#777}
-    .badge{display:inline-flex;border:1px solid #ddd;border-radius:999px;padding:4px 8px;font-size:11px;font-weight:750;text-transform:capitalize}
+    .badge{display:inline-flex;border:1px solid #ddd;border-radius:999px;padding:5px 9px;font-size:12px;font-weight:750;text-transform:capitalize}
     .amount{font-weight:800}
     .empty{padding:45px;text-align:center;color:#777}
-    .pager{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-top:1px solid #eee;font-size:12px;color:#666}
+    .pager{display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border-top:1px solid #eee;font-size:14px;color:#666}
     .pager-actions{display:flex;gap:7px}
     .tools{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
     .tool{border:1px solid #e6e6e6;border-radius:14px;padding:18px}
-    .tool-name{font-weight:850;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
-    .tool p{font-size:13px;line-height:1.55;color:#666;min-height:42px}
-    .tool-code{background:#f7f7f7;border-radius:9px;padding:9px;font-size:11px;color:#555;margin:12px 0;overflow:auto}
+    .tool-name{font-size:16px;font-weight:850;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+    .tool p{font-size:15px;line-height:1.55;color:#666;min-height:42px}
+    .tool-code{background:#f7f7f7;border-radius:9px;padding:10px;font-size:13px;color:#555;margin:12px 0;overflow:auto}
     .architecture{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;align-items:center}
-    .arch-box{border:1px solid #ddd;border-radius:12px;padding:15px;text-align:center;font-size:12px;font-weight:750}
+    .arch-box{border:1px solid #ddd;border-radius:12px;padding:16px;text-align:center;font-size:14px;font-weight:750}
     .arrow{text-align:center;color:#999}
-    .footer{padding-top:32px;color:#888;font-size:12px}
+    .footer{padding-top:34px;color:#888;font-size:14px}
     .modal{position:fixed;inset:0;background:rgba(0,0,0,.38);display:none;align-items:center;justify-content:center;padding:20px;z-index:20}
     .modal.open{display:flex}
     .modal-card{width:min(720px,100%);max-height:88vh;overflow:auto;background:#fff;border-radius:18px;border:1px solid #ddd;box-shadow:0 25px 80px rgba(0,0,0,.18)}
@@ -145,11 +145,11 @@ export function createApp(service = new OrderService()) {
     .close{border:1px solid #ddd;background:#fff;border-radius:8px;width:34px;height:34px}
     .detail-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
     .detail{border:1px solid #eee;border-radius:11px;padding:13px}
-    .detail-label{font-size:11px;color:#777;text-transform:uppercase;letter-spacing:.06em}
-    .detail-value{font-weight:750;margin-top:5px}
+    .detail-label{font-size:12px;color:#777;text-transform:uppercase;letter-spacing:.06em}
+    .detail-value{font-size:15px;font-weight:750;margin-top:5px}
     .items{margin-top:18px;border:1px solid #eee;border-radius:12px;overflow:hidden}
-    .json{background:#111;color:#eee;border-radius:10px;padding:15px;overflow:auto;font-size:12px;line-height:1.55}
-    .toast{position:fixed;right:20px;bottom:20px;background:#111;color:#fff;padding:11px 14px;border-radius:10px;font-size:12px;display:none;z-index:30}
+    .json{background:#111;color:#eee;border-radius:10px;padding:15px;overflow:auto;font-size:14px;line-height:1.55}
+    .toast{position:fixed;right:20px;bottom:20px;background:#111;color:#fff;padding:12px 16px;border-radius:10px;font-size:14px;display:none;z-index:30}
     .toast.show{display:block}
     @media(max-width:850px){.stats{grid-template-columns:repeat(2,1fr)}.tools{grid-template-columns:1fr}.architecture{grid-template-columns:1fr}.arrow{transform:rotate(90deg)}}
     @media(max-width:600px){.shell{padding:20px 14px 55px}.hero{padding:38px 0 28px}.stats{grid-template-columns:1fr 1fr}.input,.select{min-width:150px;width:100%}.filters{width:100%}.filters>*{flex:1}}

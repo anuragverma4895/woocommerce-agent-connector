@@ -23,6 +23,7 @@ export function createApp(service = new OrderService()) {
       status: "ok",
       service: "woocommerce-agent-connector",
       readOnly: true,
+      demoMode: process.env.USE_MOCK_DATA?.toLowerCase() !== "false",
     }),
   );
 
@@ -159,7 +160,7 @@ export function createApp(service = new OrderService()) {
   <div class="shell">
     <header class="topbar">
       <div class="brand">WooCommerce <span>Agent Connector</span></div>
-      <div class="status"><span class="dot"></span><span id="statusText">Checking connector...</span></div>
+      <div style="display:flex;align-items:center;gap:8px"><div class="status"><span class="dot"></span><span id="statusText">Checking connector...</span></div><div class="status" id="modeStatus">Demo mode</div></div>
     </header>
 
     <section class="hero">
@@ -407,6 +408,7 @@ export function createApp(service = new OrderService()) {
         var response = await fetch("/health");
         var data = await response.json();
         document.getElementById("statusText").textContent = data.status === "ok" ? "Connector online · Read-only" : "Connector issue";
+        document.getElementById("modeStatus").textContent = data.demoMode ? "Demo mode" : "WooCommerce mode";
         showToast("Health check passed");
       } catch (error) {
         document.getElementById("statusText").textContent = "Connector unavailable";

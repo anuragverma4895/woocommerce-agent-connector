@@ -1,0 +1,7 @@
+import type {NormalizedOrder} from "../types/order.js";
+export const mockOrders:NormalizedOrder[]=[
+{id:1001,number:"1001",status:"processing",currency:"INR",total:"2499.00",customer:{id:501,name:"Aarav Mehta",email:"aarav@example.test"},createdAt:"2026-09-29T09:15:00Z",updatedAt:"2026-09-29T09:20:00Z",paymentMethod:"cod",items:[{id:1,name:"Demo Running Shoes",quantity:1,total:"2499.00"}]},
+{id:1002,number:"1002",status:"completed",currency:"INR",total:"1299.00",customer:{id:502,name:"Diya Sharma",email:"diya@example.test"},createdAt:"2026-09-28T12:10:00Z",updatedAt:"2026-09-28T12:30:00Z",paymentMethod:"upi",items:[{id:2,name:"Demo Backpack",quantity:1,total:"1299.00"}]},
+{id:1003,number:"1003",status:"failed",currency:"INR",total:"899.00",customer:{id:503,name:"Kabir Singh",email:"kabir@example.test"},createdAt:"2026-09-27T15:40:00Z",updatedAt:"2026-09-27T15:42:00Z",paymentMethod:"card",items:[{id:3,name:"Demo Desk Lamp",quantity:1,total:"899.00"}]},
+{id:1004,number:"1004",status:"processing",currency:"INR",total:"3199.00",customer:{id:504,name:"Meera Kapoor",email:"meera@example.test"},createdAt:"2026-09-26T08:05:00Z",updatedAt:"2026-09-26T08:06:00Z",paymentMethod:"upi",items:[{id:4,name:"Demo Office Chair",quantity:1,total:"3199.00"}]},
+{id:1005,number:"1005",status:"completed",currency:"INR",total:"1599.00",customer:{id:505,name:"Rohan Gupta",email:"rohan@example.test"},createdAt:"2026-09-25T17:30:00Z",updatedAt:"2026-09-25T18:00:00Z",paymentMethod:"netbanking",items:[{id:5,name:"Demo Keyboard",quantity:1,total:"1599.00"}]}];
